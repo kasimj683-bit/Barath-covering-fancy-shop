@@ -175,28 +175,31 @@ function prepareOrder(){
     alert("Please fill Product, Quantity, Name, Phone and Address.");
     return;
   }
+
   const orderNo = makeOrderNumber();
   const now = new Date().toLocaleString("en-IN");
-  const message =
-`BARATH COVERING & FANCY SHOP
+
+  const message = `BARATH COVERING & FANCY SHOP
+
 ORDER NUMBER: ${orderNo}
 
 Product: ${p}
 Quantity: ${q}
 Customer Name: ${n}
-Customer Phone: ${ph} const whatsappUrl = https://wa.me/919976907616?text=
+Customer Phone: ${ph}
+Address: ${a}
 Order Time: ${now}
 
 Please confirm my order.`;
 
-  
+  const whatsappUrl =
+    "https://wa.me/919976907616?text=" +
+    encodeURIComponent(message);
+
   window.open(whatsappUrl, "_blank");
 
   const shown = document.getElementById("lastOrderNumber");
   if(shown) shown.textContent = orderNo;
-}
-render();
-</script>
-  
-</body>
-</html>
+
+  render();
+    }
